@@ -1,5 +1,5 @@
 package org.shopizer_test;
 
-public class PageCategoryTable {
+public class PageCategoryTable extends PageTopMenu {
 
 }

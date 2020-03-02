@@ -1,0 +1,3 @@
+Eclipse SquashTF :
+
+http://repo.squashtest.org/distribution/squash-ta-tools-bundle-1.10.0-RELEASE-installer.exe.jar
