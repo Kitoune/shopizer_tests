@@ -41,7 +41,8 @@ public class PageCategoryBedroom extends PageTopMenu {
 		
 		Actions action = new Actions(d);
 		WebElement we = d.findElement(By.xpath("//*[@id=\"miniCartDetails\"]"));
-		action.moveToElement(we).moveToElement(d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a"))).build().perform();	
+		action.moveToElement(we).moveToElement(d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a"))).build().perform();
+		d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a")).click();
 		return PageFactory.initElements(d, PageShopingCart.class);
 	}
 	
