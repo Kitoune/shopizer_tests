@@ -108,6 +108,7 @@ public class Test003 {
 				((JavascriptExecutor) driver).executeScript("viewShoppingCartPage();");
 
 				PageShopingCart page_shopCart = PageFactory.initElements(driver, PageShopingCart.class);
+				System.out.println("firefox");
 			}
 		}
 		else  {
