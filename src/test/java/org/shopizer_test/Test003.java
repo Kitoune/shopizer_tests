@@ -60,7 +60,7 @@ public class Test003 {
 		}
 		else {
 			//Default browser
-			driver = TechnicalTools.setBrowser(EBrowser.chrome);
+			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 		}
 
 		//driver = TechnicalTools.setBrowser(EBrowser.chrome);
