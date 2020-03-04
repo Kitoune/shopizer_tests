@@ -101,26 +101,26 @@ public class Test003 {
 
 		// Step 4 : Aller dans le panier
 		page_bedroom.link_shoppingCart.click();
-
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
+		
 		PageShopingCart page_shopCart = page_bedroom.checkShopCart(driver);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
-		Thread.sleep(100);
+		//Thread.sleep(100);
 		assertEquals(str_item1,page_shopCart.link_item1.getText());
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[2]/td[1]/div/div[2]")));
-		Thread.sleep(100);
+		//Thread.sleep(100);
 		assertEquals(str_item2,page_shopCart.link_item2.getText());
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='amount'])[2]")));
-		Thread.sleep(100);
+		//Thread.sleep(100);
 		assertEquals(price,page_shopCart.total_price.getText());
 
 		// Step 5 : Augmenter la quantite 
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		WebElement input1_quantity= driver.findElement(By.xpath("//tr[1]/td/input[@type=\"number\"]"));
 		input1_quantity.click();
 		TechnicalTools.fillFields(input1_quantity, nb_item);
