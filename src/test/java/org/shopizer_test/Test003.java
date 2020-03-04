@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class Test003 {
 
-	private String BROWSER=System.getProperty("browser");
+	private String browser=System.getProperty("browser");
 	WebDriver driver;
 	String product;
 
@@ -42,18 +42,18 @@ public class Test003 {
 	@Before
 	public void startup() throws ClassNotFoundException, FileNotFoundException, SQLException {
 
-		if(BROWSER.equals("chrome")) {
+		if(browser.equals("chrome")) {
 
 			//driver = new ChromeDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 
 		}
-		else if (BROWSER.equals("firefox")) {
+		else if (browser.equals("firefox")) {
 			//driver = new FirefoxDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 
 		} 
-		else if (BROWSER.equals("ie")) {
+		else if (browser.equals("ie")) {
 			//driver = new InternetExplorerDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.ie);
 

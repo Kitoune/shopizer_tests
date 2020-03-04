@@ -25,7 +25,8 @@ import java.util.ArrayList;
 
 public class Test001 {
 
-	private String BROWSER=System.getProperty("browser");
+	private String browser=System.getProperty("browser");
+	
 	WebDriver driver;
 	String product;
 
@@ -37,18 +38,18 @@ public class Test001 {
 	@Before
 	public void startup() throws ClassNotFoundException, FileNotFoundException, SQLException {
 
-		if(BROWSER.equals("chrome")) {
+		if(browser.equals("chrome")) {
 
 			//driver = new ChromeDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 
 		}
-		else if (BROWSER.equals("firefox")) {
+		else if (browser.equals("firefox")) {
 			//driver = new FirefoxDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 
 		} 
-		else if (BROWSER.equals("ie")) {
+		else if (browser.equals("ie")) {
 			//driver = new InternetExplorerDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.ie);
 
@@ -115,8 +116,9 @@ public class Test001 {
 		}
 
 		//Step 5 : Selection du filtre DEFAULT
-
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','1')\"]")));
+		
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 		page_table.btn_default.click();
 
 		/** Presence des elements **/
