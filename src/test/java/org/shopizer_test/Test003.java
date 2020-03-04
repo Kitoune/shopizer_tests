@@ -104,12 +104,15 @@ public class Test003 {
 		PageShopingCart page_shopCart = page_bedroom.checkShopCart(driver);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
+		Thread.sleep(100);
 		assertEquals(str_item1,page_shopCart.link_item1.getText());
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[2]/td[1]/div/div[2]")));
+		Thread.sleep(100);
 		assertEquals(str_item2,page_shopCart.link_item2.getText());
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='amount'])[2]")));
+		Thread.sleep(100);
 		assertEquals(price,page_shopCart.total_price.getText());
 
 		// Step 5 : Augmenter la quantite 
