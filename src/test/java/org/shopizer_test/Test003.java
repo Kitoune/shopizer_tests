@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -94,6 +95,7 @@ public class Test003 {
 		// Step 3 : Ajout au panier
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 		page_bedroom.btn_addToCart_item1.click();
+
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 		page_bedroom.btn_addToCart_item2.click();
 		Thread.sleep(2000);
@@ -102,38 +104,46 @@ public class Test003 {
 		// Step 4 : Aller dans le panier
 		page_bedroom.link_shoppingCart.click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
-		
-		PageShopingCart page_shopCart = page_bedroom.checkShopCart(driver);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
-		//Thread.sleep(100);
-		assertEquals(str_item1,page_shopCart.link_item1.getText());
+		if(browser.equals("firefox")) {
+			if (driver instanceof JavascriptExecutor) {
+				((JavascriptExecutor) driver).executeScript("viewShoppingCartPage();");
+			}
+		}
+		else  {
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[2]/td[1]/div/div[2]")));
-		//Thread.sleep(100);
-		assertEquals(str_item2,page_shopCart.link_item2.getText());
+			PageShopingCart page_shopCart = page_bedroom.checkShopCart(driver);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='amount'])[2]")));
-		//Thread.sleep(100);
-		assertEquals(price,page_shopCart.total_price.getText());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
+			//Thread.sleep(100);
+			assertEquals(str_item1,page_shopCart.link_item1.getText());
 
-		// Step 5 : Augmenter la quantite 
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[2]/td[1]/div/div[2]")));
+			//Thread.sleep(100);
+			assertEquals(str_item2,page_shopCart.link_item2.getText());
 
-		//Thread.sleep(2000);
-		WebElement input1_quantity= driver.findElement(By.xpath("//tr[1]/td/input[@type=\"number\"]"));
-		input1_quantity.click();
-		TechnicalTools.fillFields(input1_quantity, nb_item);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='amount'])[2]")));
+			//Thread.sleep(100);
+			assertEquals(price,page_shopCart.total_price.getText());
 
-		WebElement input2_quantity= driver.findElement(By.xpath("//tr[2]/td/input[@type=\"number\"]"));
-		input2_quantity.click();
-		TechnicalTools.fillFields(input2_quantity, nb_item);
 
-		assertEquals(price,page_shopCart.total_price.getText());
+			// Step 5 : Augmenter la quantite 
 
-		page_shopCart.btn_recalculer.click();
+			//Thread.sleep(2000);
+			WebElement input1_quantity= driver.findElement(By.xpath("//tr[1]/td/input[@type=\"number\"]"));
+			input1_quantity.click();
+			TechnicalTools.fillFields(input1_quantity, nb_item);
 
-		assertEquals(price,page_shopCart.total_price.getText());
+			WebElement input2_quantity= driver.findElement(By.xpath("//tr[2]/td/input[@type=\"number\"]"));
+			input2_quantity.click();
+			TechnicalTools.fillFields(input2_quantity, nb_item);
+
+			assertEquals(price,page_shopCart.total_price.getText());
+
+			page_shopCart.btn_recalculer.click();
+
+			assertEquals(price,page_shopCart.total_price.getText());
+		}
 	}
-
 }
