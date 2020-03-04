@@ -41,14 +41,14 @@ public class Test003 {
 
 	@Before
 	public void startup() throws ClassNotFoundException, FileNotFoundException, SQLException {
-/*
+
 		if(BROWSER.equals("chrome")) {
 
 			//driver = new ChromeDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 
 		}
-		else if (BROWSER.equals("fireFox")) {
+		else if (BROWSER.equals("firefox")) {
 			//driver = new FirefoxDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 
@@ -62,8 +62,8 @@ public class Test003 {
 			//Default browser
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		}
-*/
-		driver = TechnicalTools.setBrowser(EBrowser.chrome);
+
+		//driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
