@@ -40,7 +40,7 @@ public class PageCategoryBedroom extends PageTopMenu {
 	public PageShopingCart checkShopCart(WebDriver d) throws InterruptedException {
 		
 		Actions action = new Actions(d);
-		WebElement we = d.findElement(By.xpath("//*[@id=\"miniCartDetails\"]"));
+		WebElement we = d.findElement(By.xpath("//*[@id=\"miniCartSummary\"]/a/text()"));
 		action.moveToElement(we).moveToElement(d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a"))).build().perform();
 		d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a")).click();
 		return PageFactory.initElements(d, PageShopingCart.class);
