@@ -93,7 +93,9 @@ public class Test003 {
 
 		// Step 3 : Ajout au panier
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
-		page_bedroom.click_add_to_cart();
+		page_bedroom.btn_addToCart_item1.click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
+		page_bedroom.btn_addToCart_item2.click();
 		Thread.sleep(2000);
 		assertEquals(nb_item,page_bedroom.icon_nb_item.getText().substring(1,2));
 
