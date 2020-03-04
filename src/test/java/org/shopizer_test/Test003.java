@@ -41,7 +41,7 @@ public class Test003 {
 
 	@Before
 	public void startup() throws ClassNotFoundException, FileNotFoundException, SQLException {
-
+/*
 		if(BROWSER.equals("chrome")) {
 
 			//driver = new ChromeDriver();
@@ -62,8 +62,8 @@ public class Test003 {
 			//Default browser
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		}
-
-		//driver = TechnicalTools.setBrowser(EBrowser.chrome);
+*/
+		driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
