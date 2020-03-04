@@ -92,7 +92,7 @@ public class Test003 {
 		assertEquals(str_bedroom,page_bedroom.link_bedroom.getText());
 
 		// Step 3 : Ajout au panier
-
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 		page_bedroom.click_add_to_cart();
 		Thread.sleep(2000);
 		assertEquals(nb_item,page_bedroom.icon_nb_item.getText().substring(1,2));
