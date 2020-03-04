@@ -104,6 +104,7 @@ public class Test003 {
 
 		Thread.sleep(2000);
 		PageShopingCart page_shopCart = page_bedroom.checkShopCart(driver);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
 		Thread.sleep(100);
