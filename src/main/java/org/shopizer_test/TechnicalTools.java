@@ -59,22 +59,6 @@ public class TechnicalTools {
 		FileUtils.copyFile(SrcFile, DestFile);
 	}
 	
-	private static final DateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
-	
-    public static String dayDate(int nbrjour) {
-
-        Date currentDate = new Date();
-        // convert date to calendar
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        // manipulate date
-        c.add(Calendar.DATE, nbrjour); //ajout du nombre de jour necessaire
-        // convert calendar to date
-        Date currentDatePlusOne = c.getTime();
-
-         return dateFormat.format(currentDatePlusOne);
-        
-    }
     
 	public static void assertTrueLogger(Logger l, String s, boolean b) {
 		if (! b) {
