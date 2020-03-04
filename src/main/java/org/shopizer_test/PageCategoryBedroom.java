@@ -6,8 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageCategoryBedroom extends PageTopMenu {
+
+	WebDriver driver;
 
 	@FindBy (xpath="(//a[contains(text(),\"Page d'accueil\")])[1]")
 	WebElement link_homePage;
@@ -30,6 +34,8 @@ public class PageCategoryBedroom extends PageTopMenu {
 	@FindBy (xpath="//*[@id=\"miniCartDetails\"]/li[5]/a")
 	WebElement btn_payement;
 	
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	
 		
 	public void click_add_to_cart(){
 		
@@ -40,8 +46,9 @@ public class PageCategoryBedroom extends PageTopMenu {
 	public PageShopingCart checkShopCart(WebDriver d) throws InterruptedException {
 		
 		Actions action = new Actions(d);
-		WebElement we = d.findElement(By.xpath("//*[@id=\"miniCartSummary\"]/a/text()"));
-		action.moveToElement(we).moveToElement(d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a"))).build().perform();
+		WebElement we = d.findElement(By.xpath("//a[contains(text(),'Panier d'achat ')]"));
+		action.moveToElement(we).build().perform();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='miniCartDetails']/li[5]/a")));
 		d.findElement(By.xpath("//*[@id='miniCartDetails']/li[5]/a")).click();
 		return PageFactory.initElements(d, PageShopingCart.class);
 	}
