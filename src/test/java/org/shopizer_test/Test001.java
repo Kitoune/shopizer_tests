@@ -117,8 +117,9 @@ public class Test001 {
 
 		//Step 5 : Selection du filtre DEFAULT
 		
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
+		
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','1')\"]")));
 		page_table.btn_default.click();
 
 		/** Presence des elements **/
@@ -134,7 +135,7 @@ public class Test001 {
 		}
 
 		//Step 6 : Selection du filtre Asian wood
-
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','50')\"]")));
 		page_table.btn_asian_wood.click();
 		for (int i = 1; i<=driver.findElements(By.xpath("//div[@id=\"productsContainer\"]/div")).size(); i++)
@@ -148,7 +149,7 @@ public class Test001 {
 		}
 
 		//Step 7 : Selection du filtre Roots
-
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','100')\"]")));
 		page_table.btn_roots.click();
 		for (int i = 1; i<=driver.findElements(By.xpath("//div[@id=\"productsContainer\"]/div")).size(); i++)
