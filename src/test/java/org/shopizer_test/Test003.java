@@ -45,17 +45,16 @@ public class Test003 {
 
 		if(browser.equals("chrome")) {
 
-			//driver = new ChromeDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 
 		}
 		else if (browser.equals("firefox")) {
-			//driver = new FirefoxDriver();
+
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 
 		} 
 		else if (browser.equals("ie")) {
-			//driver = new InternetExplorerDriver();
+
 			driver = TechnicalTools.setBrowser(EBrowser.ie);
 
 		}
@@ -64,7 +63,6 @@ public class Test003 {
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 		}
 
-		//driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
@@ -79,7 +77,7 @@ public class Test003 {
 
 		// Step 1 : Acces à l'application
 
-		driver.get("http://localhost:8090/shopizer/shop");
+		driver.get("http://192.168.102.179:8090/shopizer/shop");
 
 		PageShop page_shop = PageFactory.initElements(driver, PageShop.class);
 
@@ -116,21 +114,20 @@ public class Test003 {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
-			//Thread.sleep(100);
+
 			assertEquals(str_item1,page_shopCart.link_item1.getText());
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[2]/td[1]/div/div[2]")));
-			//Thread.sleep(100);
+
 			assertEquals(str_item2,page_shopCart.link_item2.getText());
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='amount'])[2]")));
-			//Thread.sleep(100);
+
 			assertEquals(price,page_shopCart.total_price.getText());
 
 
 			// Step 5 : Augmenter la quantite 
 
-			//Thread.sleep(2000);
 			WebElement input1_quantity= driver.findElement(By.xpath("//tr[1]/td/input[@type=\"number\"]"));
 			input1_quantity.click();
 			TechnicalTools.fillFields(input1_quantity, nb_item);

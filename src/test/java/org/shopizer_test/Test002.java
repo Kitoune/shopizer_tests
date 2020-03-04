@@ -29,17 +29,16 @@ public class Test002 {
 
 		if(browser.equals("chrome")) {
 
-			//driver = new ChromeDriver();
 			driver = TechnicalTools.setBrowser(EBrowser.chrome);
 
 		}
 		else if (browser.equals("firefox")) {
-			//driver = new FirefoxDriver();
+
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 
 		} 
 		else if (browser.equals("ie")) {
-			//driver = new InternetExplorerDriver();
+
 			driver = TechnicalTools.setBrowser(EBrowser.ie);
 
 		}
@@ -48,7 +47,6 @@ public class Test002 {
 			driver = TechnicalTools.setBrowser(EBrowser.firefox);
 		}
 
-		//driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
@@ -87,7 +85,7 @@ public class Test002 {
 
 		// Step 1 : Acces à l'application
 
-		driver.get("http://localhost:8090/shopizer/shop");
+		driver.get("http://l192.168.102.179:8090/shopizer/shop");
 
 		PageShop page_shop = PageFactory.initElements(driver, PageShop.class);
 
