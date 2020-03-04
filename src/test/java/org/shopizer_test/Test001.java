@@ -13,14 +13,19 @@ import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 
 public class Test001 {
 
+	private String BROWSER=System.getProperty("browser");
 	WebDriver driver;
 	String product;
 
@@ -31,6 +36,28 @@ public class Test001 {
 
 	@Before
 	public void startup() throws ClassNotFoundException, FileNotFoundException, SQLException {
+/*
+		if(BROWSER.equals("chrome")) {
+
+			//driver = new ChromeDriver();
+			driver = TechnicalTools.setBrowser(EBrowser.chrome);
+
+		}
+		else if (BROWSER.equals("fireFox")) {
+			//driver = new FirefoxDriver();
+			driver = TechnicalTools.setBrowser(EBrowser.firefox);
+
+		} 
+		else if (BROWSER.equals("ie")) {
+			//driver = new InternetExplorerDriver();
+			driver = TechnicalTools.setBrowser(EBrowser.ie);
+
+		}
+		else {
+			//Default browser
+			driver = TechnicalTools.setBrowser(EBrowser.chrome);
+		}
+*/
 		driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
@@ -64,6 +91,7 @@ public class Test001 {
 		PageShop page_shop = PageFactory.initElements(driver, PageShop.class);
 
 		//Step 2 : Selection de la partie Table 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[contains(text(),'Table')])[1]")));
 		PageCategoryTable page_table = page_shop.accessTable(driver);
 
 		/** Presence d'une arborescence indiquant le chemin  **/
@@ -88,6 +116,7 @@ public class Test001 {
 
 		//Step 5 : Selection du filtre DEFAULT
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','1')\"]")));
 		page_table.btn_default.click();
 
 		/** Presence des elements **/
@@ -95,38 +124,42 @@ public class Test001 {
 		{
 
 			WebElement product_Default = driver.findElement(By.xpath("//div[@id=\"productsContainer\"]/div["+i+"]/div[2]/a/h3"));
-			
+
 			product = product_Default.getText();
-			
+
 			assertTrue(product_Default.isDisplayed());
-			
+
 		}
+
 		//Step 6 : Selection du filtre Asian wood
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','50')\"]")));
 		page_table.btn_asian_wood.click();
 		for (int i = 1; i<=driver.findElements(By.xpath("//div[@id=\"productsContainer\"]/div")).size(); i++)
 		{
 			WebElement product_asian_wood = driver.findElement(By.xpath("//div[@id=\"productsContainer\"]/div["+i+"]/div[2]/a/h3"));
-			
+
 			product = product_asian_wood.getText();
-			
+
 			assertTrue(product_asian_wood.isDisplayed());
-			
+
 		}
+
 		//Step 7 : Selection du filtre Roots
-		
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"javascript:filterCategory('BRAND','100')\"]")));
 		page_table.btn_roots.click();
 		for (int i = 1; i<=driver.findElements(By.xpath("//div[@id=\"productsContainer\"]/div")).size(); i++)
 		{
 
 			WebElement product_root = driver.findElement(By.xpath("//div[@id=\"productsContainer\"]/div["+i+"]/div[2]/a/h3"));
-			
+
 			product = product_root.getText();
-			
+
 			assertTrue(product_root.isDisplayed());
-			
+
 		}
-		
+
 	}
 
 }

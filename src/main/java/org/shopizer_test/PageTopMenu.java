@@ -44,7 +44,7 @@ public abstract class PageTopMenu {
 	@FindBy (xpath="//div[1]/div/div/div/div/nav/ul/li[3]/a")
 	WebElement btn_living_room;
 	
-	@FindBy (xpath="//div[1]/div/div/div/div/nav/ul/li[4]/a")
+	@FindBy (xpath="(//a[contains(text(),'Bedroom')])[1]")
 	WebElement btn_bedroom;
 	
 	@FindBy (xpath="//*[@id=\"main_h\"]/div/div/div/div/nav/ul/li[4]/ul/li/a")
@@ -73,5 +73,7 @@ public abstract class PageTopMenu {
 		btn_bedroom.click();
 		return PageFactory.initElements(d, PageCategoryBedroom.class);
 	}
+	
+	
 	
 }
