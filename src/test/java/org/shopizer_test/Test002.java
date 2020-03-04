@@ -85,7 +85,7 @@ public class Test002 {
 
 		// Step 1 : Acces à l'application
 
-		driver.get("http://l192.168.102.179:8090/shopizer/shop");
+		driver.get("http://192.168.102.179:8090/shopizer/shop");
 
 		PageShop page_shop = PageFactory.initElements(driver, PageShop.class);
 
