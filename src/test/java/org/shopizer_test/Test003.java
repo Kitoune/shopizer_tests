@@ -114,14 +114,17 @@ public class Test003 {
 		else  {
 
 			PageShopingCart page_shopCart = page_bedroom.checkShopCart(driver);
+			
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
-
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[1]/div/div[2]")));
 			assertEquals(str_item1,page_shopCart.link_item1.getText());
-
+			
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[2]/td[1]/div/div[2]")));
 			assertEquals(str_item2,page_shopCart.link_item2.getText());
-
+			
+			
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loadingoverlay']")));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='amount'])[2]")));
 			assertEquals(price,page_shopCart.total_price.getText());
 
