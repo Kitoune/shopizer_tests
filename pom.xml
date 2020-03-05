@@ -27,24 +27,8 @@
 			<artifactId>selenium-java</artifactId>
 			<version>3.13.0</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>2.12.1</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.12.1</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>2.12.1</version>
-		</dependency>
 		
 		<!-- pour le screenshot -->
 		<dependency>
@@ -52,7 +36,12 @@
 			<artifactId>ashot</artifactId>
 			<version>1.5.3</version>
 		</dependency>
-		
-		
+
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
   </dependencies>
 </project>
